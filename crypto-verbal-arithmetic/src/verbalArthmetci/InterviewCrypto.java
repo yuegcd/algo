@@ -48,7 +48,23 @@ public class InterviewCrypto {
 
     public static boolean solution(String[] crypt, char[][] solution) {
         /* Développez la solution ici */
+        // contiennent tous deux des zéros initiaux
+        char one = crypt[0].charAt(0);
+        char two = crypt[1].charAt(0);
+        char three = crypt[2].charAt(0);
+
+        for(int i = 0; i < solution.length; i++) {
+            if(isZero(one, i, solution)) return false;
+            if(isZero(two, i, solution)) return false;
+            if(isZero(three, i, solution)) return false;
+        }
         return false;
+    }
+
+    public static boolean isZero(char firstChar, int i, char[][] solution){
+        char oneNumero = '1';
+        if(solution[i][0] == firstChar) oneNumero = solution[i][1];
+        return oneNumero == '0';
     }
 
     /** Don't touch */
