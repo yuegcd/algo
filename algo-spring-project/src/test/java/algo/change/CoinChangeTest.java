@@ -17,7 +17,8 @@ class CoinChangeTest {
         // when
         List<Integer> change = coinChange.change(amount);
         // then
-        assertTrue(change.isEmpty());
+        List<Integer> expected = List.of(0, 0, 0, 0);
+        assertEquals(expected, change);
     }
 
     @Test
@@ -94,6 +95,17 @@ class CoinChangeTest {
         List<Integer> change = coinChange.change(amount);
         // then
         List<Integer> expected = List.of(1, 1, 0, 3);
+        assertEquals(expected, change);
+    }
+
+    @Test
+    void should_change_amount_55() {
+        // given
+        int amount = 55;
+        // when
+        List<Integer> change = coinChange.change(amount);
+        // then
+        List<Integer> expected = List.of(0, 0, 1, 5);
         assertEquals(expected, change);
     }
 }

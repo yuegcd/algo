@@ -13,6 +13,8 @@ Explanation:
 [1,1,0,3] is okay, 3*10 + 1*2 + 1*1 = 33, cost 4 pieces changes
 [3,0,0,3] is not, cost 6 pieces of changes, it is not optimal
 
+Constraints:
+0 <= amount <= 104
 */
 
 import java.util.ArrayList;
@@ -24,19 +26,9 @@ public class CoinChange {
 
     public List<Integer> change(int amount) {
         List<Integer> result = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
-        // if amount is zero
-        if (amount == 0) return List.of();
-        // if amount is exact denomination value: 1, 2, 5, 10
-        for (int i = 0; i < denominations.size(); i++) {
-            if (amount == denominations.get(i)) {
-                result.set(i, 1);
-                return result;
-            }
-        }
-        // if amount is bigger than denomination value: 1, 2, 5, 10
         for (int i = denominations.size() - 1; i >= 0; i--) {
             int rest = amount % denominations.get(i);
-            if(i == denominations.size() - 1) {
+            if (i == denominations.size() - 1) {
                 result.set(i, amount / denominations.get(i));
             } else {
                 result.set(i, amount % denominations.get(i + 1) / denominations.get(i));
